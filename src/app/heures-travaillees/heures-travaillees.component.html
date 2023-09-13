@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h1>Calculateur d'heures travaillées par mois</h1>
+  <form (ngSubmit)="calculerHeuresTravaillees()" #employeForm="ngForm">
+    <div class="form-group">
+      <label for="employeNom">Nom de l'employé :</label>
+      <input type="text" class="form-control" id="employeNom" name="employeNom" [(ngModel)]="employeNom" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Calculer</button>
+  </form>
+  <div *ngIf="resultatHeuresTravaillees">
+    <h2>Résultat :</h2>
+    <!-- Affichez ici le résultat du calcul des heures travaillées par mois -->
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Mois</th>
+        <th>Heures travaillées</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let mois of resultatHeuresTravaillees | keyvalue">
+        <td>{{ mois.key }}</td>
+        <td>{{ mois.value }} heures</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

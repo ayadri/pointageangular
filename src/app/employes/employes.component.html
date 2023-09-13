@@ -1,0 +1,68 @@
+<app-navbar></app-navbar>
+<div class="container mt-2">
+  <ng-container *ngIf="employes | async as listEmployes; else failureOrLoading">
+    <div class="card">
+
+      <div class="card-header" style="font-size: xx-large; text-align: center; font-family: Arial">Employes</div>
+      <div class="card-body">
+        <div *ngIf="searchFormGroup">
+          <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchEmployes()">
+            <div class="input-group">
+              <label class="input-group-text">Keyword</label>
+              <input formControlName="keyword" type="text" class="form-control">
+              <button class="btn btn-info"><i class="bi bi-search"></i></button>
+              <ul> <a class="btn btn-info" routerLink="/admin/new-employe"><i class="bi bi-plus"></i></a></ul>
+            </div>
+          </form>
+        </div>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>ID</th> <th>Prenom</th> <th>Nom</th> <th>Email</th> <th>Tel</th> <th>Cin</th><th>Date de naissance</th>
+          </tr>
+
+          </thead>
+          <tbody>
+          <tr *ngFor="let c of employes | async">
+            <td>{{c.id}}</td>
+            <td>{{c.prenom}}</td>
+            <td>{{c.nom}}</td>
+            <td>{{c.email}}</td>
+            <td>{{c.tel}}</td>
+            <td>{{c.cin}}</td>
+            <td>{{c.dateN}}</td>
+            <td>
+              <button (click)="handleDeleteEmploye(c)" class="btn btn-danger">
+                <i class="bi bi-trash"></i>
+              </button>
+              <button  class="btn btn-warning" routerLink="/edit-employe">
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+
+
+
+
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #failureOrLoading>
+    <ng-container *ngIf="errorMessage; else loading">
+      <div class="text-danger">
+        {{errorMessage}}
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      Loading .....
+    </ng-template>
+  </ng-template>
+</div>
+
+
+

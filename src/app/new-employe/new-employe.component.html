@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="card col-md-6 offset-3 mt-2">
+    <div class="card-header">
+      Nouveau Employe
+    </div>
+    <div class="card-body">
+      <div class="card-body">
+        <form [formGroup]="newEmployeFormGroup" (ngSubmit)="handleSaveEmploye()">
+          <div class="mb-3">
+            <label class="form-label">Prenom:</label>
+            <input type="text" formControlName="prenom" class="form-control">
+            <span class="text-danger"
+                  *ngIf="newEmployeFormGroup.controls['prenom'].touched
+                && newEmployeFormGroup.controls['prenom'].errors
+                && newEmployeFormGroup.controls['prenom'].errors!['required']">
+            le prenom est obligatoire</span>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Nom:</label>
+            <input type="text" formControlName="nom" class="form-control">
+            <span class="text-danger"
+                  *ngIf="newEmployeFormGroup.controls['nom'].touched
+                && newEmployeFormGroup.controls['nom'].errors
+                && newEmployeFormGroup.controls['nom'].errors!['required']">
+            le nom est obligatoire</span>
+
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email:</label>
+            <input type="text" formControlName="email" class="form-control">
+            <span class="text-danger"
+                  *ngIf="newEmployeFormGroup.controls['email'].touched
+                && newEmployeFormGroup.controls['email'].errors
+                && newEmployeFormGroup.controls['email'].errors!['email']">
+            l'email est obligatoire</span>
+
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tel:</label>
+            <input type="text" formControlName="tel" class="form-control">
+            <span class="text-danger"
+                  *ngIf="newEmployeFormGroup.controls['tel'].touched
+                && newEmployeFormGroup.controls['tel'].errors
+                && newEmployeFormGroup.controls['tel'].errors!['required']">
+            le telephone est obligatoire</span>
+
+          </div>
+          <div class="mb-3">
+            <label class="form-label">CIN:</label>
+            <input type="text" formControlName="cin" class="form-control">
+            <span class="text-danger"
+                  *ngIf="newEmployeFormGroup.controls['cin'].touched
+                && newEmployeFormGroup.controls['cin'].errors
+                && newEmployeFormGroup.controls['cin'].errors!['required']">
+            le Cin est obligatoire</span>
+
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Date de naissance:</label>
+            <input type="date" formControlName="dateN" class="form-control">
+            <span class="text-danger"
+                  *ngIf="newEmployeFormGroup.controls['dateN'].touched
+                && newEmployeFormGroup.controls['dateN'].errors
+                && newEmployeFormGroup.controls['dateN'].errors!['required']">
+            La date de naissance  est obligatoire</span>
+          </div>
+          <button type="submit" [disabled]="!newEmployeFormGroup.valid" class="btn btn-info">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+  </div>

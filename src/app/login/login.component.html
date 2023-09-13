@@ -1,0 +1,41 @@
+<!--
+<div class="card col-md-6 offset-3" style="margin-top: 100px;">
+  <div class="card">
+    <div class="card-header">
+      Authentification
+    </div>
+    <div class="card-body">
+      <form [formGroup]="formLogin" (ngSubmit)="handleLogin()">
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" formControlName="username">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password">
+        </div>
+        <button class="btn btn-success">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+-->
+<div class="wrapper">
+  <div class="logo">
+    <img src="https://i.pinimg.com/564x/e9/d3/c9/e9d3c9ad06474bd0285cfb720dc2ef81.jpg" alt="">
+  </div>
+  <div class="text-center mt-4 name">
+    Login
+  </div>
+  <form class="p-3 mt-3" [formGroup]="formLogin" (ngSubmit)="handleLogin()">
+    <div class="form-field d-flex align-items-center">
+      <span class="far fa-user"></span>
+      <input type="text" name="userName"  class="form-control" formControlName="username" placeholder="username">
+    </div>
+    <div class="form-field d-flex align-items-center">
+      <span class="fas fa-key"></span>
+      <input type="password" name="password"  class="form-control" formControlName="password" placeholder="password">
+    </div>
+    <button class="btn mt-3">Login</button>
+  </form>
+</div>

@@ -1,0 +1,12 @@
+<h2>Calculateur de Pause</h2>
+<div>
+  <label for="statusPointages">Statuts de Pointage:</label>
+  <input type="checkbox" value="DEBUTPAUSE" [(ngModel)]="statusPointages" id="debutPause">
+  <label for="debutPause">DEBUTPAUSE</label>
+  <input type="checkbox" value="FINPAUSE" [(ngModel)]="statusPointages" id="finPause">
+  <label for="finPause">FINPAUSE</label>
+</div>
+<button (click)="calculerDureePause()">Calculer la Durée de la Pause</button>
+<div *ngIf="dureePause">
+  <p>Durée de la pause: {{ dureePause }}</p>
+</div>

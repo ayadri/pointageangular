@@ -1,0 +1,153 @@
+<head>
+  <!-- Autres éléments head -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<app-navbar></app-navbar>
+<router-outlet xmlns="http://www.w3.org/1999/html"></router-outlet>
+<div class="main-content-inner">
+  <!-- sales report area start -->
+  <div class="sales-report-area mt-5 mb-5">
+    <div class="row">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="col-md-4 mb-4" style="background: linear-gradient(to bottom, #5161ce 0%, #99ccff 100%); width: 24%; border-radius: 10px">
+        <div class="single-report mb-xs-30">
+          <div class="s-report-inner pr--20 pt--30 mb-3">
+
+            <div class="s-report-title d-flex justify-content-between">
+            <h4 class="header-title mb-0" style="text-align: center; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <i class="fa fa-calendar-times-o"></i>&nbsp;<b>Pointage</b></h4>
+            </div>
+          </div>
+          <br>
+          <ul> <a class="btn btn-info" (click)="addPointageArrive()">Arrivée</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-info" (click)="addPointageSortie()" >Depart</a></ul>
+
+        </div>
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+      <div class="col-md-4 mb-4" style=" background: linear-gradient(to bottom, #5161ce 0%, #99ccff 100%); width: 24%; border-radius: 10px">
+        <div class="single-report mb-xs-30">
+          <div class="s-report-inner pr--20 pt--30 mb-3">
+
+            <div class="s-report-title d-flex justify-content-between">
+              <h4 class="header-title mb-0" style="text-align: center; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-clock-o"></i>&nbsp;<b>Pause</b></h4>
+            </div>
+          </div>
+          <br>
+          <ul>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="btn btn-info" (click)="addPointageDebutPause()">Debut</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-info" (click)="addPointageFinPause()">Fin</a></ul>
+        </div>
+      </div>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      <div class="col-md-4 mb-4" style="background: linear-gradient(to bottom, #5161ce 0%, #99ccff 100%); width: 24%; border-radius: 10px;">
+        <div class="single-report">
+          <div class="s-report-inner pr--20 pt--30 mb-3">
+
+            <div class="s-report-title d-flex justify-content-between">
+
+              <h4 class="header-title mb-0" style="text-align: center; color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-users"></i>&nbsp;<b>Employes</b></h4>
+
+            </div>
+          </div>
+          <br>
+          <ul>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-info" routerLink="/admin/new-employe">Ajout</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-info" routerLink="/admin/employes">Liste</a></ul>
+
+        </div>
+      </div>
+    </div>
+    <b><h4 style="color: black; font-family: 'Bell MT'; margin-left: 290px; font-size: x-large;"> CALENDRIER</h4></b>
+    <app-calendar></app-calendar> </div>
+
+    <!-- Your existing pointage-related content here -->
+
+
+  <!-- sales report area end -->
+  <!-- overview area start -->
+
+</div>
+<script>
+  // ---------Responsive-navbar-active-animation-----------
+  function test(){
+    var tabsNewAnim = $('#navbarSupportedContent');
+    var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
+    var activeItemNewAnim = tabsNewAnim.find('.active');
+    var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+    var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+    var itemPosNewAnimTop = activeItemNewAnim.position();
+    var itemPosNewAnimLeft = activeItemNewAnim.position();
+    $(".hori-selector").css({
+      "top":itemPosNewAnimTop.top + "px",
+      "left":itemPosNewAnimLeft.left + "px",
+      "height": activeWidthNewAnimHeight + "px",
+      "width": activeWidthNewAnimWidth + "px"
+    });
+    $("#navbarSupportedContent").on("click","li",function(e){
+      $('#navbarSupportedContent ul li').removeClass("active");
+      $(this).addClass('active');
+      var activeWidthNewAnimHeight = $(this).innerHeight();
+      var activeWidthNewAnimWidth = $(this).innerWidth();
+      var itemPosNewAnimTop = $(this).position();
+      var itemPosNewAnimLeft = $(this).position();
+      $(".hori-selector").css({
+        "top":itemPosNewAnimTop.top + "px",
+        "left":itemPosNewAnimLeft.left + "px",
+        "height": activeWidthNewAnimHeight + "px",
+        "width": activeWidthNewAnimWidth + "px"
+      });
+    });
+  }
+  $(document).ready(function(){
+    setTimeout(function(){ test(); });
+  });
+  $(window).on('resize', function(){
+    setTimeout(function(){ test(); }, 500);
+  });
+  $(".navbar-toggler").click(function(){
+    $(".navbar-collapse").slideToggle(300);
+    setTimeout(function(){ test(); });
+  });
+
+
+
+  // --------------add active class-on another-page move----------
+  jQuery(document).ready(function($){
+    // Get current path and find target link
+    var path = window.location.pathname.split("/").pop();
+
+    // Account for home page with empty path
+    if ( path == '' ) {
+      path = 'index.html';
+    }
+
+    var target = $('#navbarSupportedContent ul li a[href="'+path+'"]');
+    // Add active class to target link
+    target.parent().addClass('active');
+  });
+
+
+
+
+  // Add active class on another page linked
+  // ==========================================
+  // $(window).on('load',function () {
+  //     var current = location.pathname;
+  //     console.log(current);
+  //     $('#navbarSupportedContent ul li a').each(function(){
+  //         var $this = $(this);
+  //         // if the current path is like this link, make it active
+  //         if($this.attr('href').indexOf(current) !== -1){
+  //             $this.parent().addClass('active');
+  //             $this.parents('.menu-submenu').addClass('show-dropdown');
+  //             $this.parents('.menu-submenu').parent().addClass('active');
+  //         }else{
+  //             $this.parent().removeClass('active');
+  //         }
+  //     })
+  // });
+</script>
+
+

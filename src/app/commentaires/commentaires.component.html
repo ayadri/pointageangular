@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <br><br>
+  <div class="card-header" style="font-size: xx-large; text-align: center; font-family: Arial">Commentaires</div>
+  <br>
+  <form (ngSubmit)="ajouterCommentaire()">
+    <div class="form-group">
+      <label for="commentaire" style="font-size: large; text-align: center; font-family: Arial">Nouveau commentaire :</label>
+      <input type="text" id="commentaire" name="texte" [(ngModel)]="nouveauCommentaire.commentaire" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Ajouter</button>
+  </form>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Commentaire</th>
+      <th>Date</th>
+      <th>Auteur</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let commentaire of commentaires">
+      <td>{{ commentaire.commentaire }}</td>
+      <td>{{ commentaire.date | date }}</td>
+      <td>{{ commentaire.employe.nom }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
