@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div>
+  <div class="card-header" style="font-size: xx-large; text-align: center; font-family: Arial; margin-top: 20px">Pointages</div><br>
+  <div class="col-md-6">  <div class="input-group" >
+
+    <label class="input-group-text">Recherche :</label>
+    <input id="keyword" [(ngModel)]="keyword" type="text" class="form-control">
+    <button class="btn btn-info"(click)="searchPointages()"><i class="bi bi-search"></i></button>
+  </div>
+  </div>
+  <br>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th> <th>Statut du Pointage</th> <th>Date de Pointage</th> <th>Employe</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr *ngFor="let pointage of pointages$ | async">
+      <td>{{pointage.id}}</td>
+      <td>{{pointage.pointage}}</td>
+      <td>{{pointage.datePointage}}</td>
+      <td>{{pointage.employe.nom}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #failureOrLoading>
+  <ng-container *ngIf="errorMessage; else loading">
+    <div class="text-danger">
+      {{errorMessage}}
+    </div>
+  </ng-container>
+  <ng-template #loading>
+    Loading .....
+  </ng-template>
+</ng-template>
+<!--<ul>
+  <li *ngFor="let pointage of pointages">
+    <button (click)="addPointageSortie(pointage.id)">Ajouter Pointage de Sortie</button>
+    <button (click)="addPointageDebutPause(pointage.id)">Ajouter Pointage de Début de Pause</button>
+    <button (click)="addPointageFinPause(pointage.id)">Ajouter Pointage de Fin de Pause</button>
+  </li>
+</ul>-->
